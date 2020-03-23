@@ -1,4 +1,5 @@
 # Copyright (C) 2019 Yodita
+# Copyright (C) 2020 FluidOS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -80,7 +81,10 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 include vendor/fluid/config/packages.mk
 
 # Version
-include vendor/fluid/config/version.mk 
+include vendor/fluid/config/version.mk
+
+# Bootanimation
+include vendor/fluid/config/bootanimation.mk
 
 # Props
 include vendor/fluid/config/props.mk
