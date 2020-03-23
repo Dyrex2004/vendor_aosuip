@@ -18,4 +18,4 @@ SELINUX_IGNORE_NEVERALLOWS := true
 endif
 
 # Rules for QCOM targets
-include $(TOPDIR)vendor/yodita/build/core/qcom_target.mk
+include $(TOPDIR)vendor/fluid/build/core/qcom_target.mk

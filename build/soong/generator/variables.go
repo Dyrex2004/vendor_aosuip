@@ -6,12 +6,12 @@ import (
 	"android/soong/android"
 )
 
-func yoditaExpandVariables(ctx android.ModuleContext, in string) string {
-	yoditaVars := ctx.Config().VendorConfig("yoditaVarsPlugin")
+func fluidExpandVariables(ctx android.ModuleContext, in string) string {
+	fluidVars := ctx.Config().VendorConfig("fluidVarsPlugin")
 
 	out, err := android.Expand(in, func(name string) (string, error) {
-		if yoditaVars.IsSet(name) {
-			return yoditaVars.String(name), nil
+		if fluidVars.IsSet(name) {
+			return fluidVars.String(name), nil
 		}
 		// This variable is not for us, restore what the original
 		// variable string will have looked like for an Expand

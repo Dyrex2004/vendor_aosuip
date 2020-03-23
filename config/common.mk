@@ -27,39 +27,39 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 
 # Common overlays
-PRODUCT_PACKAGE_OVERLAYS += vendor/yodita/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/fluid/overlay/common
 
 # Lawnchair overlays
-PRODUCT_PACKAGE_OVERLAYS += vendor/yodita/overlay/lawnchair
+PRODUCT_PACKAGE_OVERLAYS += vendor/fluid/overlay/lawnchair
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/yodita/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/yodita/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/yodita/prebuilt/common/bin/50-base.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-base.sh \
-    vendor/yodita/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
+    vendor/fluid/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/fluid/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/fluid/prebuilt/common/bin/50-base.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-base.sh \
+    vendor/fluid/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
 
 ifneq ($(AB_OTA_PARTITIONS),)
 PRODUCT_COPY_FILES += \
-    vendor/yodita/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
-    vendor/yodita/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
-    vendor/yodita/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+    vendor/fluid/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/fluid/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/fluid/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 endif
 
-# Copy all Yodita specific init rc files
-$(foreach f,$(wildcard vendor/yodita/prebuilt/common/etc/init/*.rc),\
+# Copy all fluid specific init rc files
+$(foreach f,$(wildcard vendor/fluid/prebuilt/common/etc/init/*.rc),\
 	$(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
 
 # Sysconfigs
 PRODUCT_COPY_FILES += \
-    vendor/yodita/prebuilt/common/etc/sysconfig/yodita-power-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/yodita-power-whitelist.xml \
-    vendor/yodita/prebuilt/common/etc/sysconfig/dialer_experience.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/dialer_experience.xml \
-    vendor/yodita/prebuilt/common/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
+    vendor/fluid/prebuilt/common/etc/sysconfig/fluid-power-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/fluid-power-whitelist.xml \
+    vendor/fluid/prebuilt/common/etc/sysconfig/dialer_experience.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/dialer_experience.xml \
+    vendor/fluid/prebuilt/common/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    vendor/yodita/prebuilt/common/etc/permissions/privapp-permissions-elgoog.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-elgoog.xml \
-    vendor/yodita/prebuilt/common/etc/permissions/privapp-permissions-lawnchair.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-lawnchair.xml
+    vendor/fluid/prebuilt/common/etc/permissions/privapp-permissions-elgoog.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-elgoog.xml \
+    vendor/fluid/prebuilt/common/etc/permissions/privapp-permissions-lawnchair.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-lawnchair.xml
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
@@ -77,16 +77,16 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
 # Packages
-include vendor/yodita/config/packages.mk
+include vendor/fluid/config/packages.mk
 
 # Version
-include vendor/yodita/config/version.mk 
+include vendor/fluid/config/version.mk 
 
 # Props
-include vendor/yodita/config/props.mk
+include vendor/fluid/config/props.mk
 
 # Telephony
-include vendor/yodita/config/telephony.mk
+include vendor/fluid/config/telephony.mk
 
 # Themes and overlays
 include vendor/themes/themes.mk
