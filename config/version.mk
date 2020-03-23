@@ -1,4 +1,4 @@
-# Copyright (C) 2019 Yodita
+# Copyright (C) 2016-2017 AOSiP
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,21 +12,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Yodita versioning
-YODITA_VERSION = 1.2
+# Versioning System
+FLUID_CODENAME = Quenol
+FLUID_NUM_VERSION = ZeroOne
 
-TARGET_PRODUCT_SHORT := $(subst yodita_,,$(YODITA_BUILD))
+TARGET_PRODUCT_SHORT := $(subst FluidOS_,,$(FLUID_BUILD_TYPE))
 
-YODITA_BUILD_DATE := $(shell date -u +%Y%m%d-%H%M)
-YODITA_MOD_VERSION := Yodita-$(YODITA_VERSION)-$(YODITA_BUILD_DATE)
-YODITA_FINGERPRINT := Yodita/$(YODITA_VERSION)/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)
+ifndef FLUID_BUILD_TYPE
+    FLUID_BUILD_TYPE := UNOFFICIAL # UNLIQUEFIED soon
+endif
+
+# Only include Updater for official, weeklies, and nightly builds
+ifeq ($(filter-out OFFICIAL WEEKLIES NIGHTLY,$(FLUID_BUILD_TYPE)),)
+    PRODUCT_PACKAGES += \
+        Updater
+endif
+
+# Sign builds if building an official, weekly and nightly build
+ifeq ($(filter-out OFFICIAL WEEKLIES NIGHTLY,$(FLUID_BUILD_TYPE)),)
+    PRODUCT_DEFAULT_DEV_CERTIFICATE := $(KEYS_LOCATION)
+endif
+
+# Set all versions
+BUILD_DATE := $(shell date -u +%Y%m%d)
+BUILD_TIME := $(shell date -u +%H%M)
+FLUID_BUILD_VERSION := $(FLUID_NUM_VERSION)-$(FLUID_CODENAME)
+FLUID_VERSION := $(FLUID_BUILD_VERSION)-$(FLUID_BUILD_TYPE)-$(FLUID_BUILD)-$(BUILD_DATE)
+ROM_FINGERPRINT := Fluid/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(BUILD_TIME)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-  ro.yodita.version=$(YODITA_VERSION) \
-  ro.modversion=$(YODITA_MOD_VERSION)
-
-YODITA_DISPLAY_VERSION := $(YODITA_VERSION)
-
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-  ro.yodita.display.version=$(YODITA_DISPLAY_VERSION) \
-  ro.yodita.fingerprint=$(YODITA_FINGERPRINT)
+  ro.fluid.build.version=$(FLUID_BUILD_VERSION) \
+  ro.fluid.build.date=$(BUILD_DATE) \
+  ro.fluid.buildtype=$(FLUID_BUILD_TYPE) \
+  ro.fluid.fingerprint=$(ROM_FINGERPRINT) \
+  ro.fluid.version=$(FLUID_VERSION) \
+  ro.fluid.device=$(FLUID_BUILD) \
+  ro.modversion=$(FLUID_VERSION)
