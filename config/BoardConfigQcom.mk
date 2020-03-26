@@ -1,4 +1,4 @@
-include vendor/yodita/config/BoardConfigQcomDefs.mk
+include vendor/fluid/config/BoardConfigQcomDefs.mk
 
 BOARD_USES_ADRENO := true
 
