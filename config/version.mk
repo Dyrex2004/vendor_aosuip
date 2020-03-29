@@ -14,7 +14,7 @@
 
 # Versioning System
 FLUID_CODENAME = Quenol
-FLUID_NUM_VERSION = ZeroOne
+FLUID_NUM_VERSION = ZeroTwo
 
 TARGET_PRODUCT_SHORT := $(subst FluidOS_,,$(FLUID_BUILD_TYPE))
 
