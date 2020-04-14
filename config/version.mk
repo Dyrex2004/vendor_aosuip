@@ -19,7 +19,7 @@ FLUID_NUM_VERSION = ZeroTwo
 TARGET_PRODUCT_SHORT := $(subst FluidOS_,,$(FLUID_BUILD_TYPE))
 
 ifndef FLUID_BUILD_TYPE
-    FLUID_BUILD_TYPE := UNOFFICIAL # UNLIQUEFIED soon
+    FLUID_BUILD_TYPE := UNOFFICIAL
 endif
 
 # Only include Updater for official, weeklies, and nightly builds
