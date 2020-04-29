@@ -16,10 +16,10 @@
 # -----------------------------------------------------------------
 # Lineage OTA update package
 
-FLUID_TARGET_PACKAGE := $(PRODUCT_OUT)/FluidOS-$(FLUID_VERSION).zip
+AOSUIP_TARGET_PACKAGE := $(PRODUCT_OUT)/AOSuiP-$(AOSUIP_VERSION).zip
 
 .PHONY: bacon
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(FLUID_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(FLUID_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(FLUID_TARGET_PACKAGE).md5sum
-	@echo "Package Complete: $(FLUID_TARGET_PACKAGE)" >&2
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(AOSUIP_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(AOSUIP_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(AOSUIP_TARGET_PACKAGE).md5sum
+	@echo "Package Complete: $(AOSUIP_TARGET_PACKAGE)" >&2
