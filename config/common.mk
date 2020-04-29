@@ -28,39 +28,39 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 
 # Common overlays
-PRODUCT_PACKAGE_OVERLAYS += vendor/fluid/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/aosuip/overlay/common
 
 # Lawnchair overlays
-PRODUCT_PACKAGE_OVERLAYS += vendor/fluid/overlay/lawnchair
+PRODUCT_PACKAGE_OVERLAYS += vendor/aosuip/overlay/lawnchair
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/fluid/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/fluid/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/fluid/prebuilt/common/bin/50-base.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-base.sh \
-    vendor/fluid/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
+    vendor/aosuip/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/aosuip/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/aosuip/prebuilt/common/bin/50-base.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-base.sh \
+    vendor/aosuip/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
 
 ifneq ($(AB_OTA_PARTITIONS),)
 PRODUCT_COPY_FILES += \
-    vendor/fluid/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
-    vendor/fluid/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
-    vendor/fluid/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+    vendor/aosuip/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/aosuip/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/aosuip/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 endif
 
-# Copy all fluid specific init rc files
-$(foreach f,$(wildcard vendor/fluid/prebuilt/common/etc/init/*.rc),\
+# Copy all aosuip specific init rc files
+$(foreach f,$(wildcard vendor/aosuip/prebuilt/common/etc/init/*.rc),\
 	$(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
 
 # Sysconfigs
 PRODUCT_COPY_FILES += \
-    vendor/fluid/prebuilt/common/etc/sysconfig/fluid-power-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/fluid-power-whitelist.xml \
-    vendor/fluid/prebuilt/common/etc/sysconfig/dialer_experience.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/dialer_experience.xml \
-    vendor/fluid/prebuilt/common/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
+    vendor/aosuip/prebuilt/common/etc/sysconfig/aosuip-power-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/aosuip-power-whitelist.xml \
+    vendor/aosuip/prebuilt/common/etc/sysconfig/dialer_experience.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/dialer_experience.xml \
+    vendor/aosuip/prebuilt/common/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    vendor/fluid/prebuilt/common/etc/permissions/privapp-permissions-elgoog.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-elgoog.xml \
-    vendor/fluid/prebuilt/common/etc/permissions/privapp-permissions-lawnchair.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-lawnchair.xml
+    vendor/aosuip/prebuilt/common/etc/permissions/privapp-permissions-elgoog.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-elgoog.xml \
+    vendor/aosuip/prebuilt/common/etc/permissions/privapp-permissions-lawnchair.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-lawnchair.xml
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
@@ -78,19 +78,19 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
 # Packages
-include vendor/fluid/config/packages.mk
+include vendor/aosuip/config/packages.mk
 
 # Version
-include vendor/fluid/config/version.mk
+include vendor/aosuip/config/version.mk
 
 # Bootanimation
-include vendor/fluid/config/bootanimation.mk
+include vendor/aosuip/config/bootanimation.mk
 
 # Props
-include vendor/fluid/config/props.mk
+include vendor/aosuip/config/props.mk
 
 # Telephony
-include vendor/fluid/config/telephony.mk
+include vendor/aosuip/config/telephony.mk
 
 # Themes and overlays
 include vendor/themes/themes.mk

@@ -6,12 +6,12 @@ import (
 	"android/soong/android"
 )
 
-func fluidExpandVariables(ctx android.ModuleContext, in string) string {
-	fluidVars := ctx.Config().VendorConfig("fluidVarsPlugin")
+func aosuipExpandVariables(ctx android.ModuleContext, in string) string {
+	aosuipVars := ctx.Config().VendorConfig("aosuipVarsPlugin")
 
 	out, err := android.Expand(in, func(name string) (string, error) {
-		if fluidVars.IsSet(name) {
-			return fluidVars.String(name), nil
+		if aosuipVars.IsSet(name) {
+			return aosuipVars.String(name), nil
 		}
 		// This variable is not for us, restore what the original
 		// variable string will have looked like for an Expand

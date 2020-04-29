@@ -1,4 +1,4 @@
-include vendor/fluid/config/BoardConfigQcomDefs.mk
+include vendor/aosuip/config/BoardConfigQcomDefs.mk
 
 BOARD_USES_ADRENO := true
 
