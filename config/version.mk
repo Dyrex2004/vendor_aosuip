@@ -41,10 +41,10 @@ ROM_FINGERPRINT := aosuip/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(BUILD_TI
 AOSUIP_VERSION := $(AOSUIP_DISPLAY_VERSION)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-  ro.fluid.build.version=$(AOSUIP_BUILD_VERSION) \
-  ro.fluid.build.date=$(BUILD_DATE) \
-  ro.fluid.buildtype=$(AOSUIP_BUILD_TYPE) \
-  ro.fluid.fingerprint=$(ROM_FINGERPRINT) \
-  ro.aosuip.version=$(FLUID_VERSION) \
-  ro.fluid.device=$(AOSUIP_BUILD) \
+  ro.aosuip.build.version=$(AOSUIP_BUILD_VERSION) \
+  ro.aosuip.build.date=$(BUILD_DATE) \
+  ro.aosuip.buildtype=$(AOSUIP_BUILD_TYPE) \
+  ro.aosuip.fingerprint=$(ROM_FINGERPRINT) \
+  ro.aosuip.version=$(AOSUIP_VERSION) \
+  ro.aosuip.device=$(AOSUIP_BUILD) \
   ro.modversion=$(AOSUIP_VERSION)
