@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Versioning System
-AOSUIP_NUM_VERSION = 3.0
+AOSUIP_NUM_VERSION = 1.0
 
 TARGET_PRODUCT_SHORT := $(subst AOSuiP_,,$(AOSUIP_BUILD_TYPE))
 
